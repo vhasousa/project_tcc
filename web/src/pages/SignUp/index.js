@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { FiArrowLeft } from 'react-icons/fi';
-import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import registerImg from '~/assets/register.png';
 
 import { signUpRequest } from '~/store/modules/auth/actions';
 import { Container } from './styles';
+import api from '~/services/api';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -21,11 +22,21 @@ const schema = Yup.object().shape({
 });
 
 function SignIn() {
+  const [grades, setGrades] = useState([]);
   const dispatch = useDispatch();
+  const { register, handleSubmit, errors } = useForm({
+    validationSchema: schema,
+  });
 
-  function handleSubmit({ name, email, password }) {
-    dispatch(signUpRequest(name, email, password));
-  }
+  useEffect(() => {
+    api.get('grades').then((response) => {
+      setGrades(response.data);
+    });
+  }, []);
+
+  const onSubmit = ({ name, email, password, grade_id }) => {
+    dispatch(signUpRequest(name, email, password, grade_id));
+  };
 
   return (
     <>
@@ -45,23 +56,36 @@ function SignIn() {
             </Link>
           </section>
 
-          <Form schema={schema} onSubmit={handleSubmit}>
-            <Input name="name" placeholder="Nome completo" />
-            <Input
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input name="name" placeholder="Nome completo" ref={register} />
+            {errors.name && <span>{errors.name.message}</span>}
+            <input
               name="email"
               type="email"
               placeholder="Entre com seu -email"
+              ref={register}
             />
-            <Input
+            {errors.email && <span>{errors.email.message}</span>}
+            <input
               name="password"
               type="password"
               placeholder="Digite sua senha"
+              ref={register}
             />
+            {errors.password && <span>{errors.password.message}</span>}
+
+            <select name="grade_id" ref={register}>
+              {grades.map((grade) => (
+                <option key={grade.id} value={grade.id}>
+                  {`${grade.number}º ano do Ensino ${grade.level}`}
+                </option>
+              ))}
+            </select>
 
             <button className="button" type="submit">
               Cadastrar
             </button>
-          </Form>
+          </form>
         </div>
       </Container>
     </>

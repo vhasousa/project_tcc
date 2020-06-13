@@ -24,6 +24,14 @@ class GradeController {
 
     return res.json(grade);
   }
+
+  async index(req, res) {
+    const grades = await Grade.findAll({
+      attributes: ['id', 'number', 'level'],
+    });
+
+    return res.json(grades);
+  }
 }
 
 export default new GradeController();

@@ -50,11 +50,12 @@ export function* signInConfirmation({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    const { name, email, password } = payload;
+    const { name, email, password, grade_id } = payload;
     yield call(api.post, 'users', {
       name,
       email,
       password,
+      grade_id,
       student: true,
     });
 

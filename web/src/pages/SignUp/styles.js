@@ -68,6 +68,23 @@ export const Container = styled.div`
         padding: 0px 24px;
       }
 
+      span {
+        color: red;
+        align-self: flex-start;
+        margin-left: 10px;
+      }
+
+      select {
+        margin-top: 8px;
+        width: 100%;
+        height: 60px;
+        color: rgba(0, 0, 0, 0.6);
+        border: 1px solid #dcdce6;
+        border-radius: 8px;
+        padding: 0px 24px;
+        background: #fff;
+      }
+
       button {
         width: 100%;
         height: 60px;

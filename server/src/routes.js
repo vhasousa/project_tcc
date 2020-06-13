@@ -21,6 +21,7 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.get('/sessions/confirmation/:token', SessionController.update);
 routes.post('/sessions/confirmation', SessionController.resend);
+routes.get('/grades', GradeController.index);
 
 routes.use(authConfig);
 

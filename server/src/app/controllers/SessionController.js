@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import jwt from 'jsonwebtoken';
-import { promisify } from 'util';
 import User from '../models/User';
 
 import authConfig from '../../config/auth';
