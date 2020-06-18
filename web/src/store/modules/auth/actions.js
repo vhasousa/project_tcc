@@ -19,10 +19,10 @@ export function signInSuccess(token, user) {
   };
 }
 
-export function signUpRequest(name, email, password, grade_id) {
+export function signUpRequest(name, email, password, grade_id, school_id) {
   return {
     type: '@auth/SIGN_UP_REQUEST',
-    payload: { name, email, password, grade_id },
+    payload: { name, email, password, grade_id, school_id },
   };
 }
 

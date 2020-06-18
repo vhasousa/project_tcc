@@ -1,10 +1,13 @@
 import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
+import bcrypt from 'bcryptjs';
 import User from '../models/User';
-// import QuestionDone from '../schemas/QuestionDone';
 import registerConfig from '../../config/register';
+import resetConfig from '../../config/resetPassword';
 
-import Mail from '../../lib/Mail';
+import Queue from '../../lib/Queue';
+
+import ConfirmationMail from '../jobs/ConfirmationMail';
 
 class UserController {
   async store(req, res) {
@@ -31,28 +34,16 @@ class UserController {
 
     const { id, name, confirmed } = await User.create(req.body);
 
-    jwt.sign(
-      { id },
-      registerConfig.secret,
-      {
-        expiresIn: registerConfig.expiresIn,
-      },
-      (err, mailToken) => {
-        const url = `http://localhost:3333/sessions/confirmation/${mailToken}`;
+    const mailToken = jwt.sign({ id }, registerConfig.secret, {
+      expiresIn: registerConfig.expiresIn,
+    });
+    const url = `http://localhost:3333/sessions/confirmation/${mailToken}`;
 
-        Mail.sendMail({
-          to: `${name} <${email}>`,
-          subject: 'Conta criada com sucesso',
-          template: 'confirmation',
-          context: {
-            user: name,
-            url,
-          },
-        });
-      }
-    );
-
-    // await QuestionDone.create({ user_id: id });
+    await Queue.add(ConfirmationMail.key, {
+      url,
+      name,
+      email,
+    });
 
     return res.json({ name, email, confirmed });
   }
@@ -110,6 +101,36 @@ class UserController {
     });
 
     return res.json(user);
+  }
+
+  async resetPassword(req, res) {
+    try {
+      const schema = Yup.object().shape({
+        token: Yup.string(),
+        password: Yup.string().required().min(6),
+        confirmPassword: Yup.string().when('password', (password, field) => {
+          return password
+            ? field.required().oneOf([Yup.ref('password')])
+            : field;
+        }),
+      });
+
+      if (!(await schema.isValid(req.body))) {
+        return res.status(401).json({ message: 'Validation error' });
+      }
+
+      const { password, token } = req.body;
+
+      const { id } = jwt.verify(token, resetConfig.secret);
+
+      const newPassword = await bcrypt.hash(password, 8);
+
+      await User.update({ password_hash: newPassword }, { where: { id } });
+
+      return res.json({ ok: true });
+    } catch (err) {
+      return res.json({ message: 'Error to update the user' });
+    }
   }
 }
 

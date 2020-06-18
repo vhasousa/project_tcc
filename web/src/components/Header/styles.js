@@ -20,6 +20,11 @@ export const Content = styled.div`
       font-weight: bold;
       color: #fff;
     }
+
+    img {
+      width: 50px;
+      height: auto;
+    }
   }
 
   aside {

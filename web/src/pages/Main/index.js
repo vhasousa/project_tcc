@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import hero from '~/assets/hero.png';
+import logo from '~/assets/logo.png';
 import './styles.css';
 
 // import { Container } from './styles';
@@ -13,7 +14,7 @@ export default function Main() {
         <nav className="nav">
           <ul>
             <li>
-              <Link to="/"> Árvore do dinheiro </Link>
+              <img src={logo} alt="imgLogo" />
             </li>
           </ul>
           <ul>

@@ -21,7 +21,11 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.get('/sessions/confirmation/:token', SessionController.update);
 routes.post('/sessions/confirmation', SessionController.resend);
+routes.post('/sessions/recover', SessionController.passwordRecovery);
+routes.get('/sessions/reset/:token', SessionController.verifyToken);
+routes.put('/users/reset', UserController.resetPassword);
 routes.get('/grades', GradeController.index);
+routes.get('/schools', SchoolController.index);
 
 routes.use(authConfig);
 
@@ -35,7 +39,7 @@ routes.post('/answer/:id', ScoreController.store);
 routes.put('/users', UserController.update);
 routes.get('/modules', ModuleController.index);
 routes.get('/questions/:id/', QuestionController.index);
-routes.get('/contents', ContentController.index);
 routes.get('/contents/:id', ContentController.show);
+routes.get('/contents', ContentController.index);
 
 export default routes;

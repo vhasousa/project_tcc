@@ -11,6 +11,12 @@ class SchoolController {
 
     return res.json(school);
   }
+
+  async index(req, res) {
+    const schools = await School.findAll({ attributes: ['id', 'name'] });
+
+    return res.json(schools);
+  }
 }
 
 export default new SchoolController();

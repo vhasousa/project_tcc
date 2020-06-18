@@ -11,6 +11,7 @@ class User extends Model {
         password_hash: Sequelize.STRING,
         student: Sequelize.BOOLEAN,
         confirmed: Sequelize.BOOLEAN,
+        reset_token: Sequelize.STRING,
       },
       {
         sequelize,

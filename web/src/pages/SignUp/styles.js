@@ -2,6 +2,23 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
+  .fade-appear {
+    opacity: 0;
+    z-index: 1;
+  }
+  .fade-appearance.fade-appear-active {
+    opacity: 1;
+    transition: opacity 300ms linear;
+  }
+  .fade-enter {
+    opacity: 0;
+    z-index: 1;
+  }
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear;
+  }
+
   width: 100%;
   max-width: 1120px;
   height: 100vh;

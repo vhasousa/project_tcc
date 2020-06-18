@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import logo from '~/assets/logo_dash.png';
 import { Container, Content, Profile } from './styles';
 
 export default function Header() {
@@ -11,7 +12,10 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">ÁREA DO ALUNO</Link>
+          <Link to="/dashboard">
+            {' '}
+            <img src={logo} alt="imgLogo" />
+          </Link>
         </nav>
 
         <aside>

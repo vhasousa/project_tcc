@@ -28,7 +28,7 @@ class Database {
   }
 
   mongo() {
-    this.connectionMongo = mongoose.connect('mongodb://localhost:27017/tcc', {
+    this.connectionMongo = mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

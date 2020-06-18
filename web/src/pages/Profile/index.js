@@ -42,7 +42,7 @@ function Profile() {
             type="password"
             placeholder="Sua senha atual"
           />
-          <Input name="Password" type="password" placeholder="Nova senha" />
+          <Input name="password" type="password" placeholder="Nova senha" />
           <Input
             name="confirmPassword"
             type="password"
