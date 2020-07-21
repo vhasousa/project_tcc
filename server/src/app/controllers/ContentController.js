@@ -36,19 +36,46 @@ class ContentController {
   async show(req, res) {
     const { id } = req.params;
 
+    const content = await Content.findAll({
+      attributes: ['id', 'title'],
+      include: [
+        {
+          association: 'modules',
+          attributes: [],
+          through: {
+            attributes: [],
+          },
+          where: { id },
+        },
+      ],
+    });
+
+    return res.json(content);
+  }
+
+  async detail(req, res) {
+    const { id } = req.params;
+
     const content = await Content.findOne({
       where: { id },
-      attributes: ['title', 'content'],
+      attributes: ['id', 'title', 'content'],
       include: [
         {
           model: Attach,
           as: 'attaches',
           attributes: ['name', 'path', 'url'],
         },
+        {
+          association: 'modules',
+          attributes: [],
+          through: {
+            attributes: [],
+          },
+        },
       ],
     });
 
-    return res.json({ content, questions });
+    return res.json(content);
   }
 }
 

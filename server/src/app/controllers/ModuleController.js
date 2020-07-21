@@ -33,7 +33,7 @@ class ModuleController {
 
   async index(req, res) {
     const module = await Module.findAll({
-      attributes: ['number', 'description'],
+      attributes: ['id', 'number', 'description'],
       include: [
         {
           association: 'contents',

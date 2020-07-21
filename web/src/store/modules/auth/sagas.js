@@ -17,10 +17,6 @@ export function* signIn({ payload }) {
 
     const { user, token } = response.data;
 
-    if (!user.student) {
-      toast.error('Usuário não é um aluno');
-      return;
-    }
     if (!user.confirmed) {
       toast.error('E-mail não confirmado');
       history.push('/confirmation');
@@ -31,7 +27,11 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    history.push('/dashboard');
+    if (user.student) {
+      history.push('/dashboard');
+    } else {
+      history.push('/dashboard_adm');
+    }
   } catch (err) {
     toast.error('Falha na autenticação, verifique seus dados');
     yield put(signFailure());

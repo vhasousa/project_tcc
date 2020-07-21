@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Form, Input } from '@rocketseat/unform';
+import { useForm } from 'react-hook-form';
 import { CSSTransition } from 'react-transition-group';
 import { FiLogIn } from 'react-icons/fi';
 import * as Yup from 'yup';
@@ -10,7 +10,6 @@ import { signInRequest } from '~/store/modules/auth/actions';
 
 import imgTeste from '~/assets/money.png';
 import logo from '~/assets/logo_transparent.png';
-import logoTeste from '~/assets/logo_teste.png';
 import { Container } from './styles';
 
 const schema = Yup.object().shape({
@@ -23,10 +22,13 @@ const schema = Yup.object().shape({
 function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
+  const { register, handleSubmit, errors } = useForm({
+    validationSchema: schema,
+  });
 
-  function handleSubmit({ email, password }) {
+  const onSubmit = ({ email, password }) => {
     dispatch(signInRequest(email, password));
-  }
+  };
 
   return (
     <Container>
@@ -34,18 +36,22 @@ function SignIn() {
         <div>
           <section>
             <img src={logo} alt="teste" />
-            <Form schema={schema} onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <h1>Faça o seu login</h1>
-              <Input
+              <input
                 name="email"
                 type="email"
                 placeholder="Entre com seu -email"
+                ref={register}
               />
-              <Input
+              {errors.email && <span>{errors.email.message}</span>}
+              <input
                 name="password"
                 type="password"
                 placeholder="Digite sua senha"
+                ref={register}
               />
+              {errors.password && <span>{errors.password.message}</span>}
 
               <button type="submit">
                 {loading ? 'Carregando...' : 'Acessar'}
@@ -55,7 +61,7 @@ function SignIn() {
                 {' '}
                 <FiLogIn size={16} color="#8a78e4" /> Criar conta
               </Link>
-            </Form>
+            </form>
           </section>
           <img src={imgTeste} alt="teste" />
         </div>

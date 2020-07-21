@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input } from '@rocketseat/unform';
+import { useForm } from 'react-hook-form';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
@@ -12,12 +12,15 @@ import { Container } from './styles';
 
 function Profile() {
   const dispatch = useDispatch();
-
   const profile = useSelector((state) => state.user.profile);
 
-  function handleSubmit(data) {
+  const { register, handleSubmit } = useForm({
+    defaultValues: profile,
+  });
+
+  const onSubmit = (data) => {
     dispatch(updateProfileRequest(data));
-  }
+  };
 
   function handleSignOut() {
     dispatch(signOut());
@@ -26,31 +29,39 @@ function Profile() {
   return (
     <DefaultLayout>
       <Container>
-        <Form initialData={profile} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <AvatarInput />
-          <Input name="name" placeholder="Nome completo" />
-          <Input
+          <input name="name" placeholder="Nome completo" ref={register} />
+          <input
             name="email"
             type="email"
             placeholder="Seu endereço de e-mail"
+            ref={register}
           />
 
           <hr />
 
-          <Input
+          <input
             name="oldPassword"
             type="password"
             placeholder="Sua senha atual"
+            ref={register}
           />
-          <Input name="password" type="password" placeholder="Nova senha" />
-          <Input
+          <input
+            name="password"
+            type="password"
+            placeholder="Nova senha"
+            ref={register}
+          />
+          <input
             name="confirmPassword"
             type="password"
             placeholder="Confirme a nova senha"
+            ref={register}
           />
 
           <button type="submit">Atualizar perfil</button>
-        </Form>
+        </form>
 
         <button type="button" onClick={handleSignOut}>
           Sair da aplicação

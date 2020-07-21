@@ -72,6 +72,12 @@ export const Container = styled.div`
         padding: 0px 24px;
       }
 
+      span {
+        color: red;
+        align-self: flex-start;
+        margin-left: 10px;
+      }
+
       button {
         width: 100%;
         height: 60px;

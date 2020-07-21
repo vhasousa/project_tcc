@@ -39,7 +39,9 @@ export function* recoverPassword({ payload }) {
 
     history.push('/login');
   } catch (err) {
-    toast.error('Erro ao enviar token, verifique o seu e-mail');
+    toast.error(
+      'Erro ao enviar token, verifique se o seu e-mail foi cadastrado corretamente'
+    );
   }
 }
 
