@@ -1,4 +1,5 @@
-import './bootstrap';
+// import './bootstrap';
+import 'dotenv/config';
 
 import Queue from './lib/Queue';
 

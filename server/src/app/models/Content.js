@@ -22,6 +22,7 @@ class Content extends Model {
    */
 
   static associate(models) {
+    this.belongsTo(models.Grade, { foreignKey: 'grade_id', as: 'grade' });
     this.belongsTo(models.Attach, { foreignKey: 'attach_id', as: 'attaches' });
     this.belongsToMany(models.Module, {
       through: 'module_contents',

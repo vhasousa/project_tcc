@@ -26,7 +26,7 @@ class GradeController {
   }
 
   async index(req, res) {
-    const grades = await Grade.findAlll({
+    const grades = await Grade.findAll({
       attributes: ['id', 'number', 'level'],
     });
 
