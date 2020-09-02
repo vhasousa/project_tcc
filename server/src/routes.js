@@ -13,6 +13,8 @@ import GradeController from './app/controllers/GradeController';
 import SchoolController from './app/controllers/SchoolController';
 import QuestionController from './app/controllers/QuestionController';
 import ScoreController from './app/controllers/ScoreController';
+import AuthorController from './app/controllers/AuthorController';
+import Writer from './app/models/Writer';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -36,11 +38,13 @@ routes.post('/schools', SchoolController.store);
 routes.post('/grades', GradeController.store);
 routes.post('/questions', QuestionController.store);
 routes.post('/answer/:id', ScoreController.store);
+routes.post('/authors', AuthorController.store);
 routes.put('/users', UserController.update);
 routes.get('/modules/:grade_id', ModuleController.index);
 routes.get('/questions/:id', QuestionController.index);
 routes.get('/contents/:id', ContentController.show);
 routes.get('/content/:id', ContentController.detail);
 routes.get('/contents', ContentController.index);
+routes.get('/authors', AuthorController.index);
 
 export default routes;

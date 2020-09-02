@@ -4,9 +4,9 @@ import Attach from '../models/Attach';
 
 class ModuleController {
   async store(req, res) {
-    const modules = await Module.create(req.body);
+    const module = await Module.create(req.body);
 
-    return res.json(modules);
+    return res.json(module);
   }
 
   async index(req, res) {

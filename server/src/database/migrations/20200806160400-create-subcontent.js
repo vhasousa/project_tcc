@@ -1,34 +1,32 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('modules', {
+    return queryInterface.createTable('subcontents', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
-      title: {
+      subtitle: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      description: {
+      subcontent: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      introduction: {
-        type: Sequelize.STRING,
-        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,
+        allowNull: false,
       },
       updated_at: {
         type: Sequelize.DATE,
+        allowNull: false,
       },
     });
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('modules');
+    return queryInterface.dropTable('subcontents');
   },
 };

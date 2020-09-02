@@ -1,31 +1,29 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('module_contents', {
+    return queryInterface.createTable('content_author', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
-      module_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'modules',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-      },
       content_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'contents',
           key: 'id',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
+      },
+      writer_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'writers',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       created_at: {
         type: Sequelize.DATE,
@@ -39,6 +37,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('module_contents');
+    return queryInterface.dropTable('content_author');
   },
 };

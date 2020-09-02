@@ -28,9 +28,9 @@ export default function Main() {
               Educação financeira <br /> para jovens.
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              luctus congue dignissim. Vestibulum et ex nisl. Vestibulum eu
-              luctus nisi. Fusce sit amet vehicula nisl.{' '}
+              Uma aplicação voltada para crianças e adolescente com intuito de
+              ensinar educação financeira de forma divertida, através de
+              metodologias de ensino atuais.{' '}
             </p>
             <Link to="/register">Faça parte</Link>
           </div>
@@ -45,16 +45,11 @@ export default function Main() {
               <div className="service-description">
                 <h3>Ensinar finanças de forma simples.</h3>
                 <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse tincidunt massa sem. Vestibulum quis augue ac orci
-                  bibendum pellentesque ut nec dolor. Quisque metus ipsum,
-                  pulvinar quis ipsum quis, consequat cursus leo. Suspendisse
-                  fermentum, nisl et ultricies blandit, mauris metus accumsan
-                  mauris, sit amet vulputate elit nunc id libero. Vivamus porta
-                  lacus libero, et ullamcorper est volutpat ac. Maecenas eros
-                  urna, interdum in lectus nec, tristique semper mauris. Duis
-                  finibus nunc sed nulla bibendum, ut ornare tellus finibus.
-                  Donec id magna risus.
+                  Educação financeira é um assunto que ultimamente tem sido
+                  discutido sobre a sua importância e inserir essa matéria no
+                  currículo escolar. A melhor fase para a introdução desse
+                  assunto é quando criança. Para isso, o conteúdo disponibilzado
+                  na plataforma segue o material didático da AEF - Brasil.
                 </div>
               </div>
             </div>
@@ -64,16 +59,11 @@ export default function Main() {
               <div className="service-description">
                 <h3>Forma divertida e interativa de aprender.</h3>
                 <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse tincidunt massa sem. Vestibulum quis augue ac orci
-                  bibendum pellentesque ut nec dolor. Quisque metus ipsum,
-                  pulvinar quis ipsum quis, consequat cursus leo. Suspendisse
-                  fermentum, nisl et ultricies blandit, mauris metus accumsan
-                  mauris, sit amet vulputate elit nunc id libero. Vivamus porta
-                  lacus libero, et ullamcorper est volutpat ac. Maecenas eros
-                  urna, interdum in lectus nec, tristique semper mauris. Duis
-                  finibus nunc sed nulla bibendum, ut ornare tellus finibus.
-                  Donec id magna risus.
+                  Metodologias ativas são a base nas quais os conteúdos serão
+                  consumidos. Os alunos terão um papel ativo no processo de
+                  contrução de seu conhecimento. Isso se dará através da
+                  gamificação em que terá uma forma de ranking e opções de
+                  tomadas de decisão dentro das atividades propostas.
                 </div>
               </div>
             </div>
@@ -83,16 +73,12 @@ export default function Main() {
               <div className="service-description">
                 <h3>Pronto para o uso.</h3>
                 <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Suspendisse tincidunt massa sem. Vestibulum quis augue ac orci
-                  bibendum pellentesque ut nec dolor. Quisque metus ipsum,
-                  pulvinar quis ipsum quis, consequat cursus leo. Suspendisse
-                  fermentum, nisl et ultricies blandit, mauris metus accumsan
-                  mauris, sit amet vulputate elit nunc id libero. Vivamus porta
-                  lacus libero, et ullamcorper est volutpat ac. Maecenas eros
-                  urna, interdum in lectus nec, tristique semper mauris. Duis
-                  finibus nunc sed nulla bibendum, ut ornare tellus finibus.
-                  Donec id magna risus.
+                  A aplicação será fornecida como uma solução completa de
+                  inserção de um projeto de educação financeira nas escolas. Com
+                  um valor única a escola dará acesso aos seus alunos a
+                  plataforma. Detalhe, essa aplicação não precisará de um
+                  infraestrutura interna das escolas, o acesso pode ser feito
+                  simplesmente através de um navegador de internet.
                 </div>
               </div>
             </div>

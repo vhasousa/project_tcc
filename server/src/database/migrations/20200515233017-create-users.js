@@ -27,6 +27,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
+      reset_token: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       school_id: {
         type: Sequelize.INTEGER,
         references: {

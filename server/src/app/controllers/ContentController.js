@@ -6,36 +6,15 @@ import Attach from '../models/Attach';
 import Question from '../schemas/Question';
 
 class ContentController {
-  // async store(req, res) {
-  //   const contents = await Content.create(req.body);
-
-  //   return res.json(contents);
-  // }
-
   async store(req, res) {
-    const schema = Yup.object().shape({
-      title: Yup.string().required(),
-      content: Yup.string().required(),
-      modules: Yup.array(),
-    });
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ message: 'Validation fails' });
-    }
-    /**
-     * Receives in the body of the request all the contents related to this modules
-     * and the data from this module.
-     */
-    const { modules, ...data } = req.body;
-
-    // const [...module] = modules;
+    const { writers, ...data } = req.body;
 
     const content = await Content.create(data);
 
-    if (modules && modules.length > 0) {
-      content.setModules(modules);
+    if (writers && writers.length > 0) {
+      console.error(writers[0]);
+      await content.setWriters(writers);
     }
-
     return res.json(content);
   }
 

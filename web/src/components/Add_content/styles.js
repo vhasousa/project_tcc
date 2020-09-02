@@ -24,7 +24,17 @@ export const Container = styled.div`
       padding: 0px 24px;
     }
 
-    *button {
+    select {
+      width: 100%;
+      height: 60px;
+      color: #333;
+      border: 1px solid #dcdce6;
+      border-radius: 8px;
+      padding: 0px 24px;
+      background: #fff;
+    }
+
+    button {
       width: 100%;
       height: 60px;
       background: #8a78e4;

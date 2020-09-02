@@ -8,8 +8,19 @@ import Attach from '../app/models/Attach';
 import User from '../app/models/User';
 import School from '../app/models/School';
 import Grade from '../app/models/Grade';
+import Writer from '../app/models/Writer';
+import Subcontent from '../app/models/Subcontent';
 
-const models = [Module, Content, Attach, School, Grade, User];
+const models = [
+  Module,
+  Content,
+  Attach,
+  School,
+  Grade,
+  User,
+  Writer,
+  Subcontent,
+];
 
 class Database {
   constructor() {

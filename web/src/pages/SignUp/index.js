@@ -55,7 +55,8 @@ function SignIn() {
 
               <h1>Cadastro</h1>
               <p>
-                Faça seu cadastro, e aprenda finanças de uma fácil e divertida
+                Faça seu cadastro, e aprenda finanças de uma forma fácil e
+                divertida
               </p>
 
               <Link to="/login">

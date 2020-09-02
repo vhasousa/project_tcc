@@ -4,8 +4,9 @@ class Module extends Model {
   static init(sequelize) {
     super.init(
       {
-        number: Sequelize.INTEGER,
+        title: Sequelize.INTEGER,
         description: Sequelize.STRING,
+        introduction: Sequelize.STRING,
       },
       {
         sequelize,
