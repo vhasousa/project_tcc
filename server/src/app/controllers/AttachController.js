@@ -14,7 +14,7 @@ class AttachController {
 
     const { url } = file;
 
-    return res.download(url);
+    return res.json(file);
   }
 }
 

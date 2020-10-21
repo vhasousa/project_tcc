@@ -13,7 +13,6 @@ import Dashboard from '../pages/Dashboard';
 import Dashboard_adm from '../pages/Dashboard_adm';
 import Content from '../pages/Content';
 import Register_content from '../pages/Register_content';
-import ContentDetail from '../components/Add_module';
 import Profile from '../pages/Profile';
 
 export default function Routes() {
@@ -30,7 +29,6 @@ export default function Routes() {
       <Route path="/dashboard_adm" component={Dashboard_adm} isPrivate />
       <Route path="/register_content" component={Register_content} isPrivate />
       <Route path="/contents/:module_id" component={Content} isPrivate />
-      <Route path="/content/:content_id" component={ContentDetail} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
     </Switch>
   );

@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import PDFViewer from 'pdf-viewer-reactjs';
 
 import DefaultLayout from '~/pages/_layouts/default';
-import { Container, Menu } from './styles';
 import api from '~/services/api';
 
 function Dashboard() {
-  const [modules, setModules] = useState([]);
+  const [pdf, setPdf] = useState([]);
 
   useEffect(() => {
-    api.get('modules').then((response) => {
-      setModules(response.data);
-    });
+    api.get('contents').then((response) => {});
   }, []);
 
   return (
     <DefaultLayout>
-      <Container>
-        <ul>
-          {modules.map((module) => (
-            <li key={module.id}>
-              <Link to={`contents/${module.id}`}>
-                <strong>MODULO {module.number}</strong>
-                <p>{module.description}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Menu>pontos</Menu>
-      </Container>
+      <PDFViewer
+        document={{
+          url: 'http://localhost:3333/files/0023a38ddc01fc20.pdf',
+        }}
+      />
     </DefaultLayout>
   );
 }

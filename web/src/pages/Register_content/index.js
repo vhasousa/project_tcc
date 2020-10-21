@@ -1,32 +1,69 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Step1 from '../../components/Add_module';
-import Step2 from '../../components/Add_content';
-// import Result from './Result';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+
+import api from '~/services/api';
+
+import { Container } from './styles';
 
 function Register_content() {
-  return (
-    <div className="container">
-      <h1>Form Wizzard</h1>
+  const [grades, setGrades] = useState([]);
+  const [file, setFile] = useState([]);
+  const { register, handleSubmit } = useForm({});
 
-      <Router>
-        <>
-          <Step2 />
-          <nav>
-            <ul>
-              <li>
-                <Link to="/step1">Step 1</Link>
-              </li>
-              <li>
-                <Link to="/step2">Step 2</Link>
-              </li>
-            </ul>
-          </nav>
-          <Route exact path="/step1" component={Step1} />
-          <Route path="/step2" component={Step2} />
-        </>
-      </Router>
-    </div>
+  useEffect(() => {
+    api.get('grades').then((response) => {
+      setGrades(response.data);
+    });
+  }, []);
+
+  const handleUpload = useCallback(async (e) => {
+    const data = new FormData();
+
+    data.append('file', e.target.files[0]);
+
+    const response = await api.post('files', data);
+
+    const { id } = response.data;
+
+    setFile(id);
+  }, []);
+
+  const onSubmit = async (data, e) => {
+    const { title, grade_id } = data;
+
+    await api.post('contents', {
+      title,
+      grade_id,
+      attach_id: file,
+    });
+    e.target.reset();
+  };
+
+  return (
+    <Container>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input name="title" placeholder="Título do conteúdo" ref={register} />
+
+        <select name="grade_id" ref={register}>
+          <option value="" disabled selected>
+            Informe o ano
+          </option>
+          {grades.map((grade) => (
+            <option key={grade.id} value={grade.id}>
+              {`${grade.number}º ano do Ensino ${grade.level}`}
+            </option>
+          ))}
+        </select>
+
+        <input
+          type="file"
+          name="attach_id"
+          onChange={handleUpload}
+          ref={register}
+        />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </Container>
   );
 }
 

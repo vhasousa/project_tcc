@@ -1,20 +1,13 @@
 import * as Yup from 'yup';
 import Content from '../models/Content';
-import Module from '../models/Module';
 import User from '../models/User';
 import Attach from '../models/Attach';
 import Question from '../schemas/Question';
 
 class ContentController {
   async store(req, res) {
-    const { writers, ...data } = req.body;
+    const content = await Content.create(req.body);
 
-    const content = await Content.create(data);
-
-    if (writers && writers.length > 0) {
-      console.error(writers[0]);
-      await content.setWriters(writers);
-    }
     return res.json(content);
   }
 
@@ -24,17 +17,15 @@ class ContentController {
     const { grade_id } = user;
 
     const content = await Content.findAll({
-      attributes: ['id'],
+      where: { grade_id },
       include: [
         {
-          association: 'modules',
-          attributes: [],
-          through: {
-            attributes: [],
-          },
-          where: { grade_id },
+          model: Attach,
+          as: 'attaches',
+          attributes: ['name', 'path', 'url'],
         },
       ],
+      attributes: ['title'],
     });
 
     return res.json(content);

@@ -5,7 +5,6 @@ class Content extends Model {
     super.init(
       {
         title: Sequelize.STRING,
-        content: Sequelize.TEXT,
       },
       {
         sequelize,
@@ -22,17 +21,8 @@ class Content extends Model {
    */
 
   static associate(models) {
-    // this.belongsTo(models.Grade, { foreignKey: 'grade_id', as: 'grade' });
-    // this.belongsTo(models.Attach, { foreignKey: 'attach_id', as: 'attaches' });
-    // this.belongsTo(models.Module, {
-    //   foreignKey: 'module_id',
-    //   as: 'modules',
-    // });
-    this.belongsToMany(models.Writer, {
-      through: 'content_author',
-      as: 'writers',
-      foreignKey: 'content_id',
-    });
+    this.belongsTo(models.Grade, { foreignKey: 'grade_id', as: 'grade' });
+    this.belongsTo(models.Attach, { foreignKey: 'attach_id', as: 'attaches' });
   }
 }
 
