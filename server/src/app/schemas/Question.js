@@ -3,23 +3,12 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const QuestionSchema = new Schema({
-  description: String,
-  alternatives: [
-    {
-      text: {
-        type: String,
-        required: true,
-      },
-      isCorrect: {
-        type: Boolean,
-        required: true,
-        default: false,
-      },
-    },
-  ],
-  content: {
-    type: Number,
-    required: true,
+  question: String,
+  correct_answer: String,
+  incorrect_answer: Array,
+  module_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Module',
   },
 });
 

@@ -10,8 +10,8 @@ import RecoverPassword from '../pages/SignIn/RecoverPassword';
 import ResetPassword from '../pages/SignIn/ResetPassword';
 
 import Dashboard from '../pages/Dashboard';
-import Dashboard_adm from '../pages/Dashboard_adm';
-import Content from '../pages/Content';
+import Modules from '../pages/Modules';
+import Questions from '../pages/Questions';
 import Register_content from '../pages/Register_content';
 import Profile from '../pages/Profile';
 
@@ -26,9 +26,9 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/dashboard_adm" component={Dashboard_adm} isPrivate />
       <Route path="/register_content" component={Register_content} isPrivate />
-      <Route path="/contents/:module_id" component={Content} isPrivate />
+      <Route path="/modules" component={Modules} isPrivate />
+      <Route path="/questions/:module_id" component={Questions} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
     </Switch>
   );

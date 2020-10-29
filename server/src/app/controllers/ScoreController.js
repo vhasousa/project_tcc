@@ -11,17 +11,17 @@ class ScoreController {
      * Verify if question have been done
      */
 
-    const done = await QuestionDone.find({
-      questions: {
-        $elemMatch: {
-          question: req.params.id,
-        },
-      },
-    });
+    // const done = await QuestionDone.find({
+    //   questions: {
+    //     $elemMatch: {
+    //       question: req.params.id,
+    //     },
+    //   },
+    // });
 
-    if (done[0]) {
-      return res.status(400).json({ message: 'Question already made' });
-    }
+    // if (done[0]) {
+    //   return res.status(400).json({ message: 'Question already made' });
+    // }
 
     /**
      * Search for the question in the body of the request where

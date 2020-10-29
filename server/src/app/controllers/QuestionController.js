@@ -2,23 +2,24 @@ import Question from '../schemas/Question';
 
 class QuestionController {
   async store(req, res) {
-    const { description, alternatives, content } = req.body;
+    const { question, correct_answer, incorrect_answer, module_id } = req.body;
 
-    const question = await Question.create({
-      description,
-      alternatives,
-      content,
+    const questionnaire = await Question.create({
+      question,
+      correct_answer,
+      incorrect_answer,
+      module_id,
     });
 
-    return res.json(question);
+    return res.json(questionnaire);
   }
 
   async index(req, res) {
-    const { id } = req.params;
+    const { module_id } = req.params;
 
-    const questions = await Question.find({ content: id });
+    const results = await Question.find({ module_id });
 
-    return res.json(questions);
+    return res.json({ results });
   }
 }
 

@@ -12,6 +12,7 @@ import GradeController from './app/controllers/GradeController';
 import SchoolController from './app/controllers/SchoolController';
 import QuestionController from './app/controllers/QuestionController';
 import ScoreController from './app/controllers/ScoreController';
+import ModuleController from './app/controllers/ModuleController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -34,10 +35,11 @@ routes.post('/files', upload.single('file'), AttachController.store);
 routes.post('/schools', SchoolController.store);
 routes.post('/grades', GradeController.store);
 routes.post('/questions', QuestionController.store);
+routes.post('/modules', ModuleController.store);
 routes.post('/answer/:id', ScoreController.store);
 routes.put('/users', UserController.update);
-routes.get('/questions/:id', QuestionController.index);
-routes.get('/contents/:id', ContentController.show);
+routes.get('/questions/:module_id', QuestionController.index);
+routes.get('/modules', ModuleController.index);
 routes.get('/content/:id', ContentController.detail);
 routes.get('/contents', ContentController.index);
 

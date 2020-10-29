@@ -1,24 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: 70vh;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 24px;
-    list-style: none;
-    margin: 20px 20px 0px 20px;
-
-    li {
-      background: #fff;
-      padding: 24px;
-      border-radius: 8px;
-      position: relative;
-    }
+  button {
   }
 `;
-
-export const Menu = styled.div``;
