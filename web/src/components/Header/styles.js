@@ -31,7 +31,7 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
 
-    div {
+    strong {
       color: #fff;
     }
   }

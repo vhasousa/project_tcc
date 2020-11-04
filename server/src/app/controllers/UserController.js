@@ -1,7 +1,11 @@
 import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 import bcrypt from 'bcryptjs';
+
 import User from '../models/User';
+import Wallet from '../models/Wallet';
+import Investment from '../models/Investment';
+
 import registerConfig from '../../config/register';
 import resetConfig from '../../config/resetPassword';
 
@@ -44,6 +48,12 @@ class UserController {
       name,
       email,
     });
+
+    /*
+    Create the wallet of the user
+    */
+    await Wallet.create({ user_id: id });
+    await Investment.create({ user_id: id });
 
     return res.json({ name, email, confirmed });
   }

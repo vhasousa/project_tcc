@@ -2,13 +2,13 @@ import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
 import databaseConfig from '../config/database';
 
-import Content from '../app/models/Content';
-import Attach from '../app/models/Attach';
 import User from '../app/models/User';
 import School from '../app/models/School';
 import Grade from '../app/models/Grade';
+import Wallet from '../app/models/Wallet';
+import Investment from '../app/models/Investment';
 
-const models = [Content, Attach, School, Grade, User];
+const models = [School, Grade, User, Wallet, Investment];
 
 class Database {
   constructor() {

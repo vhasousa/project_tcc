@@ -14,6 +14,7 @@ import Modules from '../pages/Modules';
 import Questions from '../pages/Questions';
 import Register_content from '../pages/Register_content';
 import Profile from '../pages/Profile';
+import Investment from '../pages/Investment';
 
 export default function Routes() {
   return (
@@ -30,6 +31,7 @@ export default function Routes() {
       <Route path="/modules" component={Modules} isPrivate />
       <Route path="/questions/:module_id" component={Questions} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/investment" component={Investment} isPrivate />
     </Switch>
   );
 }

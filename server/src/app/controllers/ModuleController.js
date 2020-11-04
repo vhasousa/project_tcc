@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
 import Module from '../schemas/Module';
+import User from '../models/User';
 
 class ModuleController {
   async store(req, res) {
@@ -9,9 +9,11 @@ class ModuleController {
   }
 
   async index(req, res) {
-    const modules = await Module.find();
+    const user = await User.findOne({ where: req.userId });
 
-    const { id, number, description } = modules;
+    const { grade_id } = user;
+
+    const modules = await Module.find({ grade_id });
 
     return res.json(modules);
   }

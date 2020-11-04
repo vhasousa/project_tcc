@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Questionaire from '~/components/Questionaire';
+import Score from '~/components/Score';
 import DefaultLayout from '~/pages/_layouts/default';
 import api from '~/services/api';
 
@@ -12,7 +13,7 @@ function Questions({ match }) {
 
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [count, setCount] = useState(0);
   const [showAnswers, setShowAnswers] = useState(false);
 
   useEffect(() => {
@@ -27,12 +28,19 @@ function Questions({ match }) {
     });
   }, [module_id]);
 
-  const handleAnswer = (answer) => {
+  const handleAnswer = async (answer) => {
     if (!showAnswers) {
       if (answer === questions[currentIndex].correct_answer) {
-        setScore(score + 1);
+        const amount = await api.post(`score/${questions[currentIndex]._id}`);
+        const { score } = amount.data;
+        setCount(score);
       }
     }
+
+    const amount = await api.get('score');
+    const score = amount.data;
+
+    setCount(score);
 
     setShowAnswers(true);
   };
@@ -46,7 +54,7 @@ function Questions({ match }) {
   return questions.length > 0 ? (
     <DefaultLayout>
       {currentIndex >= questions.length ? (
-        <h1>Your Score was {score}</h1>
+        <Score score={count} />
       ) : (
         <Questionaire
           data={questions[currentIndex]}
@@ -60,13 +68,5 @@ function Questions({ match }) {
     <h1>Carregando...</h1>
   );
 }
-
-Questions.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      module_id: PropTypes.string,
-    }),
-  }).isRequired,
-};
 
 export default Questions;

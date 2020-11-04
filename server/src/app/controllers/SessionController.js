@@ -42,9 +42,9 @@ class SessionController {
       return res.status(401).json({ message: 'Password does not match' });
     }
 
-    // if (!user.confirmed) {
-    //   return res.redirect('http://localhost:3000/login/confirmation');
-    // }
+    if (!user.confirmed) {
+      return res.redirect('http://localhost:3000/login/confirmation');
+    }
 
     const { id, name, student, confirmed } = user;
 

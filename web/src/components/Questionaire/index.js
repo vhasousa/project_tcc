@@ -2,16 +2,11 @@ import React from 'react';
 
 import { Container, Button } from './styles';
 
-// const Answers = ({ answer, className }) => (
-//   <button className={className} type="button">
-//     {answer}
-//   </button>
-// );
-
 function Questionaire({
   showAnswers,
   handleAnswer,
   handleNextQuestion,
+  done,
   data: { question, correct_answer, answers },
 }) {
   return (

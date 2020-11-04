@@ -12,7 +12,6 @@ function Modules() {
 
   useEffect(() => {
     api.get(`modules`).then((response) => {
-      console.log(response.data);
       setModules(response.data);
     });
   }, []);

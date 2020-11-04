@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import PDFViewer from 'pdf-viewer-reactjs';
 
 import DefaultLayout from '~/pages/_layouts/default';
-import api from '~/services/api';
 
 import { Container } from './styles';
 
 function Dashboard() {
-  const [pdf, setPdf] = useState([]);
-
-  useEffect(() => {
-    api.get('contents').then((response) => {});
-  }, []);
-
   return (
     <DefaultLayout>
       <Container>
@@ -24,6 +17,7 @@ function Dashboard() {
           }}
         />
         <Link to="modules">Acessar questões</Link>
+        <Link to="investment">Acessar investimento</Link>
       </Container>
     </DefaultLayout>
   );
