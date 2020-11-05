@@ -30,7 +30,7 @@ export const Container = styled.div`
       'c c';
 
     button {
-      margin-top: 15px;
+      margin-top: 16px;
       padding: 10px;
       border-radius: 3px;
       border: none;

@@ -98,19 +98,12 @@ class UserController {
     return res.json({ id, name, email });
   }
 
-  async index(req, res) {
-    const user = await User.findAll({
-      attributes: ['name'],
-      include: [
-        {
-          association: 'schools',
-          attributes: ['name'],
-        },
-        { association: 'grades', attributes: ['number', 'level'] },
-      ],
-    });
+  async show(req, res) {
+    const user = await User.findOne({ where: { id: req.userId } });
 
-    return res.json(user);
+    const { grade_id } = user;
+
+    return res.json(grade_id);
   }
 
   async resetPassword(req, res) {

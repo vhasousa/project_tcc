@@ -11,13 +11,19 @@ function Dashboard() {
   return (
     <DefaultLayout>
       <Container>
-        <PDFViewer
-          document={{
-            url: 'http://localhost:3333/files/0023a38ddc01fc20.pdf',
-          }}
-        />
-        <Link to="modules">Acessar questões</Link>
-        <Link to="investment">Acessar investimento</Link>
+        <section>
+          <Link to="modules">Acessar questões</Link>
+          <Link to="invest">Investir</Link>
+          <Link to="investment">Acessar investimento</Link>
+        </section>
+        <div>
+          {/* <PDFViewer /> */}
+          <PDFViewer
+            document={{
+              url: 'http://localhost:3333/files/1a631f1fac9c83a8.pdf',
+            }}
+          />
+        </div>
       </Container>
     </DefaultLayout>
   );

@@ -53,6 +53,11 @@ class InvestmentController {
 
     return res.json(investment_value + investment);
   }
+
+  // async update(req, res) {
+  //   const value = await Investment.update({ where: { user_id: req.userId } });
+
+  // }
 }
 
 export default new InvestmentController();

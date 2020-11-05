@@ -7,8 +7,9 @@ import School from '../app/models/School';
 import Grade from '../app/models/Grade';
 import Wallet from '../app/models/Wallet';
 import Investment from '../app/models/Investment';
+import Attach from '../app/models/Attach';
 
-const models = [School, Grade, User, Wallet, Investment];
+const models = [School, Grade, User, Wallet, Investment, Attach];
 
 class Database {
   constructor() {

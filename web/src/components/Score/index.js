@@ -10,7 +10,7 @@ function Score({ score }) {
       <h2>Sua atual pontuação é:</h2>
       <h1>{score}</h1>
       <div>
-        <Link to="/">
+        <Link to="/invest">
           <div>
             <p>Investir</p>
             <GiMoneyStack size={20} color="#8789ff" />

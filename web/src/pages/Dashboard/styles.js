@@ -1,11 +1,37 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
-  width: 70vh;
   display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
+  justify-content: space-around;
+  /* margin-top: 16px; */
+  margin-top: 10px;
 
-  button {
+  section {
+    a {
+      margin: 10px;
+      display: block;
+      width: 100%;
+      height: 60px;
+      background: #8a78e4;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      font-size: 18px;
+      line-height: 60px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: ${darken(0.03, '#8a78e4')};
+      }
+    }
+  }
+
+  div {
+    height: 10px;
   }
 `;
