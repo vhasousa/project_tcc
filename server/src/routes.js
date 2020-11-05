@@ -44,5 +44,6 @@ routes.get('/score', ScoreController.index);
 routes.post('/score/:id', ScoreController.store);
 routes.get('/investment', InvestmentController.index);
 routes.post('/investment', InvestmentController.store);
+routes.post('/redeem', InvestmentController.redeem);
 
 export default routes;

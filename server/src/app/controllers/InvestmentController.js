@@ -1,6 +1,5 @@
 import Investment from '../models/Investment';
 import Wallet from '../models/Wallet';
-import QuestionDone from '../schemas/QuestionDone';
 
 class InvestmentController {
   async index(req, res) {
@@ -54,10 +53,35 @@ class InvestmentController {
     return res.json(investment_value + investment);
   }
 
-  // async update(req, res) {
-  //   const value = await Investment.update({ where: { user_id: req.userId } });
+  async redeem(req, res) {
+    const { redeem_value } = req.body;
 
-  // }
+    const { investment_value } = await Investment.findOne({
+      where: { user_id: req.userId },
+    });
+
+    const { amount } = await Wallet.findOne({ where: { user_id: req.userId } });
+
+    if (redeem_value > investment_value) {
+      return res.status(400).json({
+        message:
+          'You can not redeem a value bigger than you have in your investment!',
+      });
+    }
+
+    const redeem = investment_value - redeem_value;
+    await Investment.update(
+      { investment_value: redeem },
+      { where: { user_id: req.userId } }
+    );
+
+    await Wallet.update(
+      { amount: amount + redeem_value },
+      { where: { user_id: req.userId } }
+    );
+
+    return res.json(amount + redeem_value);
+  }
 }
 
 export default new InvestmentController();

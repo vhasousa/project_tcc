@@ -3,22 +3,9 @@ import QuestionDone from '../schemas/QuestionDone';
 
 class ScoreController {
   async store(req, res) {
-    const done = await QuestionDone.find({
-      questions: {
-        $elemMatch: {
-          question: req.params.id,
-        },
-      },
-    });
-
     const { amount } = await Wallet.findOne({ where: { user_id: req.userId } });
 
-    if (done) {
-      const score = amount;
-      return res.json({ score });
-    }
-
-    const score = amount + 1;
+    const score = amount + 10;
 
     await Wallet.update({ amount: score }, { where: { user_id: req.userId } });
 

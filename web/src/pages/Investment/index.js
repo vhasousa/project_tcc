@@ -24,9 +24,9 @@ function Investment() {
         <h2>Valor investido:</h2>
         <h1>{investedValue}</h1>
         <div>
-          <Link to="/invest">
+          <Link to="/redeem">
             <div>
-              <p>Investir</p>
+              <p>Resgatar</p>
               <GiMoneyStack size={20} color="#8789ff" />
             </div>
           </Link>

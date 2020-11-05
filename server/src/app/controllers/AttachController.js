@@ -12,7 +12,7 @@ class AttachController {
 
   async index(req, res) {
     const { grade_id } = req.params;
-    const file = await Attach.findOne({ grade_id });
+    const file = await Attach.findOne({ where: { grade_id } });
 
     const { url } = file;
 

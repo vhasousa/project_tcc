@@ -10,8 +10,7 @@ export const Container = styled.div`
   section {
     a {
       margin: 10px;
-      display: block;
-      width: 100%;
+      width: 80%;
       height: 60px;
       background: #8a78e4;
       border: 0;

@@ -16,6 +16,7 @@ import Register_content from '../pages/Register_content';
 import Profile from '../pages/Profile';
 import Invest from '../pages/Invest';
 import Investment from '../pages/Investment';
+import Redeem from '../pages/Redeem';
 
 export default function Routes() {
   return (
@@ -34,6 +35,7 @@ export default function Routes() {
       <Route path="/profile" component={Profile} isPrivate />
       <Route path="/invest" component={Invest} isPrivate />
       <Route path="/investment" component={Investment} isPrivate />
+      <Route path="/redeem" component={Redeem} isPrivate />
     </Switch>
   );
 }

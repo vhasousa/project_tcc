@@ -14,7 +14,7 @@ import api from '~/services/api';
 import history from '~/services/history';
 
 const schema = Yup.object().shape({
-  investment: Yup.number().required('O nome é obrigatório'),
+  investment: Yup.number().required('Insira o valor a ser investido'),
 });
 
 function Investment() {
@@ -75,7 +75,7 @@ function Investment() {
                 name="investment"
                 ref={register}
               />
-              {errors.investment && <span>{errors.investment.message}</span>}
+              {errors.investment && <span>Insira o valor e ser investido</span>}
               <button type="submit">Investir</button>
             </form>
           </div>
