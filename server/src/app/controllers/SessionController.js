@@ -24,7 +24,9 @@ class SessionController {
 
     const { email, password } = req.body;
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+    });
 
     /**
      * Verify the email being passed to see if user exists
@@ -44,9 +46,6 @@ class SessionController {
 
     const { id, name, student, confirmed } = user;
 
-    // if (!user.confirmed) {
-    //   return res.redirect('http://localhost:3000/confirmation');
-    // }
     /**
      * returning data from user and you token
      */

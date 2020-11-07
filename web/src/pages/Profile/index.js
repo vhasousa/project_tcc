@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
-import AvatarInput from './AvatarInput';
 import DefaultLayout from '~/pages/_layouts/default';
 
 import { Container } from './styles';
@@ -30,7 +29,6 @@ function Profile() {
     <DefaultLayout>
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <AvatarInput />
           <input name="name" placeholder="Nome completo" ref={register} />
           <input
             name="email"

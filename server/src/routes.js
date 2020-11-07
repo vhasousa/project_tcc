@@ -37,7 +37,6 @@ routes.post('/questions', QuestionController.store);
 routes.post('/modules', ModuleController.store);
 routes.post('/answer/:id', ScoreController.store);
 routes.put('/users', UserController.update);
-routes.get('/users', UserController.show);
 routes.get('/questions/:module_id', QuestionController.index);
 routes.get('/modules', ModuleController.index);
 routes.get('/score', ScoreController.index);

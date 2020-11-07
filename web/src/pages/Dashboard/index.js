@@ -16,13 +16,12 @@ function Dashboard() {
           <Link to="invest">Investir</Link>
           <Link to="investment">Carteira de investimento</Link>
           <Link to="redeem">Resgate de investimento</Link>
-          <Link to="wallet">Carteira de pontos</Link>
         </section>
         <div>
           {/* <PDFViewer /> */}
           <PDFViewer
             document={{
-              url: 'http://localhost:3333/files/8148436c800661f6.pdf',
+              url: 'http://localhost:3333/files/40456ad5748f32ac.pdf',
             }}
           />
         </div>

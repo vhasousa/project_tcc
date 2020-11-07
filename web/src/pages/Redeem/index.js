@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { MdMoneyOff } from 'react-icons/md';
 import { GiReceiveMoney } from 'react-icons/gi';
-import { FcMoneyTransfer } from 'react-icons/fc';
 
 import { toast } from 'react-toastify';
 import DefaultLayout from '~/pages/_layouts/default';
@@ -82,7 +81,7 @@ function Redeem() {
             </form>
           </div>
           <section>
-            <FcMoneyTransfer size={300} />
+            <GiReceiveMoney size={300} color="#fff" />
           </section>
         </div>
       </Container>
